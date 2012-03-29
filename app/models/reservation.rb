@@ -6,10 +6,25 @@ end
 
 class LocationCapacityTravelersValidator < ActiveModel::Validator
   def validate(record)
-    if(record.ship == nil && record.location == nil)
+    if(record.ship == nil or record.location == nil)
       return false;
     end
     record.ship.travelers <= record.location.capacity
+  end
+end
+
+class AntiDuplicationValidator < ActiveModel::Validator
+  def validate(record)
+    if(record.ship = nil or record.location == nil)
+      return false
+    end
+
+    Reservation.where(ship: record.ship).to_a.each do |s|
+      if record.date.beginning_of_day == s.date.beginning_of_day
+        and record.slice == s.slice then
+        return false
+      end
+    end
   end
 end
 
@@ -33,5 +48,6 @@ class Reservation
 
   validates_with ReservationUniquenessValidator 
   validates_with LocationCapacityTravelersValidator
+  validates_with AntiDuplicationValidator
 end
 
