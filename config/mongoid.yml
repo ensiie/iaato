@@ -1,10 +1,10 @@
 development:
   host: localhost
-  database: dunapi_development
+  database: iaato_development
 
 test:
   host: localhost
-  database: dunapi_test
+  database: iaato_test
 
 # set these environment variables on your prod server
 production:

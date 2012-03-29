@@ -1,4 +1,4 @@
-class Dunapi.Collections.Ships extends Backbone.Collection
-  model: Dunapi.Models.Ship
+class Iaato.Collections.Ships extends Backbone.Collection
+  model: Iaato.Models.Ship
 
   url: '/api/ships/search'

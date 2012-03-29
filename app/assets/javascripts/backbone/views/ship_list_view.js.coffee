@@ -1,4 +1,4 @@
-class Dunapi.Views.ShipListView extends Backbone.View
+class Iaato.Views.ShipListView extends Backbone.View
   initialize: ->
     @collection.bind 'reset', @render, @
 

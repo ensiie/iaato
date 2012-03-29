@@ -1,7 +1,7 @@
 require 'api'
 
-Dunapi::Application.routes.draw do
-  mount Dunapi::API => "/"
+Iaato::Application.routes.draw do
+  mount Iaato::API => "/"
 
   root to: 'home#index'
 
