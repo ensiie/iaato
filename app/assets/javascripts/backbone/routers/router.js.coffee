@@ -1,8 +1,8 @@
-class Dunapi.Routers.Default extends Backbone.Router
+class Iaato.Routers.Default extends Backbone.Router
   routes:
     'coucou': 'index'
 
   index: ->
-    ships = new Dunapi.Collections.Ships()
+    ships = new Iaato.Collections.Ships()
     ships.fetch()
-    new Dunapi.Views.ShipListView(collection: ships)
+    new Iaato.Views.ShipListView(collection: ships)

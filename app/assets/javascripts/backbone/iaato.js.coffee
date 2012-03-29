@@ -4,13 +4,13 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.Dunapi =
+window.Iaato =
   Models: {}
   Collections: {}
   Routers: {}
   Views: {}
 
 $(->
-  window.router = new Dunapi.Routers.Default()
+  window.router = new Iaato.Routers.Default()
   Backbone.history.start({pushState: true})
 )

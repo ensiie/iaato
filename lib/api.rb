@@ -1,4 +1,4 @@
-module Dunapi
+module Iaato
   class API < Grape::API
     prefix 'api'
 

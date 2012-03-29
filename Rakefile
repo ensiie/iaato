@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Dunapi::Application.load_tasks
+Iaato::Application.load_tasks
