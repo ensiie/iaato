@@ -1,18 +1,46 @@
 require 'spec_helper'
 
-describe 'ships endpoint', type: :request do
-  it 'search all' do
-    @b = Ship.create name: 'test'# , coordinates: [1.3,2.5]
-    get '/api/ships/search'
-    response.code.should == '200'
-    JSON.parse(response.body).should == [
-      JSON.parse(@b.to_json)
-    ]
+describe 'API', type: :request do
+
+
+  describe 'Ship' do
+    context 'get all' do
+      before { get '/api/ships' }
+
+      subject { last_response }
+
+      it { should be_ok }
+      its(:body) {
+        should have_json_type Array
+      }
+    end
+
+    context 'get one' do
+      before {
+        @ship = create :ship, name: 'concordia'
+        get "/api/ships/#{@ship.id}"
+      }
+
+      subject { last_response }
+
+      it { should be_ok }
+      its(:body) { should be_json_eql(%("concordia")).at_path('name') }
+    end
+
+    context 'create' do
+      before { post "/api/ships", name: 'concordia' }
+
+      subject { last_response }
+
+      its(:status) { should == 201 }
+      its(:body) { should be_json_eql(%("concordia")).at_path('name') }
+    end
+
+    context 'update' do
+      before {
+        @ship = create :ship, name: 'concordia'
+        patch "/api/ships/#{@ship.id}"
+      }
+    end
   end
-
-  #it "search nearest" do
-    #@b = Ship.create name: 'test', coordinates: [1.3,2.5]
-    #get '/api/ships/search?near=1.3,2.5'
-
-  #end
 end

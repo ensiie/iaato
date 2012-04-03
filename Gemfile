@@ -23,13 +23,21 @@ end
 gem 'jquery-rails'
 gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :branch => '2.4.0-stable'
 gem 'bson_ext', '~> 1.6'
-gem 'grape'
+gem "grape", "~> 0.2.0"
 gem 'pry-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'rspec'
+  gem 'growl'
+  gem 'rb-fsevent'
+  gem 'spork-rails'
+  gem 'guard-spork'
   gem 'database_cleaner'
   gem "json_spec", "~> 1.0.0"
+  gem 'factory_girl_rails'
 end
 
 # To use ActiveModel has_secure_password

@@ -1,27 +1,37 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
-require 'rspec/autorun'
+require 'rubygems'
+require 'spork'
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Spork.prefork do
+  ENV["RAILS_ENV"] ||= 'test'
+  require File.expand_path("../../config/environment", __FILE__)
+  require 'rspec/rails'
+  require 'rack/test'
+  require 'rspec/autorun'
 
-RSpec.configure do |config|
-  config.infer_base_class_for_anonymous_controllers = false
+  Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with(:truncation)
+  RSpec.configure do |config|
+    config.infer_base_class_for_anonymous_controllers = false
+
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean_with(:truncation)
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+      DatabaseCleaner.clean
+    end
+
+    config.include Rack::Test::Methods
+    config.include JsonSpec::Helpers
+    config.include FactoryGirl::Syntax::Methods
   end
 
-  config.before(:each) do
-    DatabaseCleaner.start
-    DatabaseCleaner.clean
-  end
+end
 
-  #config.after(:each) do
-    #DatabaseCleaner.clean
-  #end
+Spork.each_run do
+  load "#{Rails.root}/lib/api.rb"
+  load "#{Rails.root}/config/routes.rb"
+  Dir["#{Rails.root}/app/**/*.rb"].each {|f| load f}
 end
