@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :branch => '2.4.0-stable'
+gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git', :branch => '2.4.0-stable'
 gem 'bson_ext', '~> 1.6'
 gem "grape", "~> 0.2.0"
 gem 'pry-rails'
