@@ -1,10 +1,9 @@
 require 'spec_helper'
-require 'api/ship_helper'
-
 
 describe 'API', type: :request do
-  describe 'Ship' do
 
+
+  describe 'Ship' do
     context 'get all' do
       before { get '/api/ships' }
 
@@ -18,22 +17,23 @@ describe 'API', type: :request do
 
     context 'get one' do
       before {
-        @ship = create :ship, name: 'concordia', capacity: 200
+        @ship = create :ship, name: 'concordia'
         get "/api/ships/#{@ship.id}"
       }
 
       subject { last_response }
+
       it { should be_ok }
-      it_should_be_a_ship
+      its(:body) { should be_json_eql(%("concordia")).at_path('name') }
     end
 
     context 'create' do
-      before { post "/api/ships", name: 'concordia', capacity: 200}
+      before { post "/api/ships", name: 'concordia' }
 
       subject { last_response }
 
       its(:status) { should == 201 }
-      it_should_be_a_ship
+      its(:body) { should be_json_eql(%("concordia")).at_path('name') }
     end
 
     context 'update' do
