@@ -7,7 +7,7 @@ describe 'API', type: :request do
 
     context 'get all' do
       before {
-        @ships = 100.times.map{ FactoryGirl.create(:ship) }
+        @ships = 10.times.map{ FactoryGirl.create(:ship) }
         get '/api/ships'
       }
 
@@ -18,10 +18,8 @@ describe 'API', type: :request do
         should have_json_type Array
       }
 
-      it do
-        @ships.count.times do |i|
-          it_should_be_a_ship "{#i}/"
-        end
+      10.times do |i|
+          it_should_be_a_ship i.to_s + "/"
       end
     end
 
@@ -34,6 +32,8 @@ describe 'API', type: :request do
       subject { last_response }
       it { should be_ok }
       it_should_be_a_ship
+      its_name_should_be "concordia"
+      its_capacity_should_be 200
     end
 
     context 'create' do
