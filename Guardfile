@@ -23,7 +23,8 @@ guard 'rspec', :version => 2 do
   watch(%r{^app/(.*)(\.erb|\.haml)$})                 { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/routing/#{m[1]}_routing_spec.rb", "spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb", "spec/acceptance/#{m[1]}_spec.rb"] }
   watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
-  watch('lib/api.rb')                                 { "spec/api/ship_spec.rb" }
+  watch(%r{^lib/(.+)api.rb$})                         { "spec/api/*.rb" }
+  watch(%r{^spec/api/.*(spec|helper).rb$})                { "spec/api/*.rb" }
   watch('config/routes.rb')                           { "spec/routing" }
   watch('app/controllers/application_controller.rb')  { "spec/controllers" }
   # Capybara request specs
