@@ -27,9 +27,6 @@ class Reservation
   # slice of the day 1 < slice < 5
   field :slice, type: Integer
 
-  belongs_to :ship
-  belongs_to :location
-
   validates :slice, inclusion: 1..5
 
   validates :date, :slice, :ship, :location, presence: true
