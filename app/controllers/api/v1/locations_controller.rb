@@ -6,6 +6,7 @@ class Api::V1::LocationsController < Api::V1::V1Controller
   end
 
   def show
+    @reservations = Reservation.where location_id: @location.id
     respond_with @location
   end
 

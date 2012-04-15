@@ -6,6 +6,7 @@ class Api::V1::ShipsController < Api::V1::V1Controller
   end
 
   def show
+    @reservations = Reservation.where ship_id: @ship.id
     respond_with @ship
   end
 

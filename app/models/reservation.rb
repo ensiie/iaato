@@ -1,6 +1,6 @@
 class ReservationUniquenessValidator < ActiveModel::Validator
   def validate(record)
-    if(record.ship == nil or record.location == nil)
+    if(record.ship_id == nil or record.location_id == nil)
       record.errors[:base] << "The ship or the location does not exist"
     elsif Reservation.where(date: record.date.beginning_of_day, slice: record.slice, ship_id: record.ship_id, location_id: record.location_id).first != nil
       record.errors[:base] << "This ship has already booked the place at that time"
@@ -10,9 +10,9 @@ end
 
 class LocationCapacityTravelersValidator < ActiveModel::Validator
   def validate(record)
-    if(record.ship == nil or record.location == nil)
+    if(record.ship_id == nil or record.location_id == nil)
       record.errors[:base] << "The ship or the location does not exist"
-    elsif(record.ship.travelers > record.location.capacity)
+    elsif(Ship.find(record.ship_id).travelers > Location.find(record.location_id).capacity)
       record.errors[:base] << "Too many travalers on that boat"
     end
   end
@@ -29,7 +29,7 @@ class Reservation
 
   validates :slice, inclusion: 1..5
 
-  validates :date, :slice, :ship, :location, presence: true
+  validates :date, :slice, :ship_id, :location_id, presence: true
 
   index([[:date], [:ship], [:location]],
     unique: true
