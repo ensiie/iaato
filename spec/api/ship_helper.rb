@@ -1,5 +1,5 @@
 def it_should_be_a_ship(path = "")
-  its(:body){ should have_json_path("#{path}_id") }
+  its(:body){ should have_json_path("#{path}id") }
   its(:body){ should have_json_type(String).at_path("#{path}name") }
   its(:body){ should have_json_type(Integer).at_path("#{path}capacity") }
   its(:body){ should have_json_type(Integer).at_path("#{path}travelers") }
