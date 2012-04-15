@@ -16,7 +16,7 @@ module Iaato
       end
 
       post do
-        s = Ship.save(params).to_json
+        Ship.create(params).to_json
       end
 
       patch ':id' do
