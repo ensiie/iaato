@@ -25,6 +25,9 @@ gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git', :branch => '2.4
 gem 'bson_ext', '~> 1.6'
 gem "grape", "~> 0.2.0"
 gem 'pry-rails'
+gem 'rabl'
+gem 'cancan'
+gem 'devise'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
