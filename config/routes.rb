@@ -5,9 +5,6 @@ Iaato::Application.routes.draw do
 
   root to: 'home#index'
 
-  namespace :plateform do
-    get 'batiments'
-  end
 
-  get '/:arf' => 'home#index'
+  get '/:wildcard' => 'home#index'
 end
