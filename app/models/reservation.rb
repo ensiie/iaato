@@ -35,6 +35,9 @@ class Reservation
     unique: true
   )
 
+  has_one :ship
+  has_one :location
+
   validates_with ReservationUniquenessValidator 
   validates_with LocationCapacityTravelersValidator
 end

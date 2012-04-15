@@ -5,7 +5,5 @@ class Location
   field :capacity, type: Integer
   field :coordinates, type: Array
 
-  has_many :reservations
-
   validates :name, :capacity, :coordinates, presence: true
 end

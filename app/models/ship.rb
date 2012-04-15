@@ -10,7 +10,5 @@ class Ship
   validates :capacity, presence: true
   validates :name, uniqueness: true, presence: true
 
-  has_many :reservations
-
   attr_accessible :name, :travelers, :capacity, :position
 end
