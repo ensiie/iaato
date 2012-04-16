@@ -31,6 +31,8 @@ gem 'rabl'
 gem 'cancan'
 gem 'devise'
 gem 'haml-rails'
+gem 'heroku'
+gem 'unicorn'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
