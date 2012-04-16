@@ -1,0 +1,3 @@
+%ul
+  - @collection.each (ship) ->
+    %li= ship.get('name')
