@@ -18,6 +18,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem "rails-backbone"
+  gem 'compass-rails'
+  gem 'haml_coffee_assets'
 end
 
 gem 'jquery-rails'
@@ -28,6 +30,7 @@ gem 'pry-rails'
 gem 'rabl'
 gem 'cancan'
 gem 'devise'
+gem 'haml-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"

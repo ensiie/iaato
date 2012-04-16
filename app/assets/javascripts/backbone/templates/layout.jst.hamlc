@@ -1,0 +1,7 @@
+%nav.menu
+  %ul
+    %li
+      %a{href: '/ships'} Ships
+    %li
+      %a{href: '/locations'} Locations
+#content

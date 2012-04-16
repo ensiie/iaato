@@ -26,5 +26,10 @@ Iaato::Application.routes.draw do
     end
   end
 
+  namespace :templates do
+    get :ships
+    get :locations
+  end
+
   get '/:wildcard' => 'home#index'
 end
