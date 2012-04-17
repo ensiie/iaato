@@ -8,5 +8,5 @@ class Iaato.Routers.Default extends Backbone.Router
 
   ships: ->
     ships = new Iaato.Collections.Ships()
-    view = new Iaato.Views.ApplicationView(type: 'shipList', el: $('body'), collection: ships)
+    view = new Iaato.Views.ShipsView(el: $('body'), collection: ships)
     ships.fetch()

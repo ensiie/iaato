@@ -1,0 +1,9 @@
+%li
+  %h2= @get 'name'
+  .capacity
+    %span.current= @get 'travelers'
+    %span.slash /
+    %span.max= @get 'capacity'
+  .operator Cunard Line
+  .description
+    RMS Queen Mary 2 is a transatlantic ocean liner. She was the first major ocean liner built since Queen Elizabeth 2 in 1969, the vessel she succeeded as flagship of the Cunard Line. The ship was named the Queen Mary 2 by Queen Elizabeth II in 2004 after the first RMS Queen Mary, completed in 1936. The Queen Mary was in turn named after Mary of Teck, consort of King George V. With the retirement of Queen Elizabeth 2 from active duty in 2008, the Queen Mary 2 is currently the only transatlantic ocean liner in service running between Southampton and New York, although the ship is often used for cruising, including an annual world cruise.

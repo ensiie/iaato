@@ -1,10 +1,9 @@
 class Iaato.Views.ApplicationView extends Backbone.View
-  template: JST['backbone/templates/layout']
+  template_layout: JST['backbone/templates/layout']
 
-  initialize: ->
+  initialize: (name) ->
+    @name = name
     @render()
-    switch @options.type
-      when 'shipList' then new Iaato.Views.ShipListView(el: @$('#content'), collection: @collection)
 
   render: ->
-    $('body').html @template()
+    $('body').html @template_layout @
