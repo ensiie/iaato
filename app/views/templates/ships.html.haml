@@ -7,9 +7,9 @@
     La carte
   %section#filter
     %h2 Filters
-    %form
-      %input{type: 'text', placeholder: 'nom'}
-      -#%input{type: 'submit', value: 'Valider'}
+    %form{action: '#'}
+      %label Ship name
+      %input{type: 'text', name: 'name', placeholder: 'nom'}
   %ul.ships
     %li
       %h2 Queen Mary 2

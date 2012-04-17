@@ -1,7 +1,9 @@
 %nav.menu
-  %ul
-    %li
-      %a{href: '/ships'} Ships
-    %li
-      %a{href: '/locations'} Locations
-#content
+#{id: @name}
+  #map
+  %section#filter
+    %h2 Filters
+    %form{action: '#'}
+      %label Ship name
+      %input{type: 'text' name: 'name' placeholder: 'nom'}
+  %ul.ships
