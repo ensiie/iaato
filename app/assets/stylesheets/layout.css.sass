@@ -30,23 +30,49 @@ nav
     color: white
     text-decoration: none
 
+@mixin cf
+  display: block
+  content: "."
+  height: 0
+  visibility: hidden
+  clear: both
 @mixin resource_layout
   position: relative
   margin-left: 10px
   $map_width: 50%
 
-  section#filter
+  form
     color: black
     background: rgba(255,255,255, 0.5)
     +border-radius(10px)
     box-shadow: -1px 2px 5px 1px rgba(255, 255, 255, 0.7)
-    input[type='text']
+    margin-bottom: 10px
+    margin-right: $map_width
+    padding: 10px
+    font-weight: normal
+    $label_width: 20%
+    label
+      float: left
+      width: $label_width
+      padding-right: 30px
+    input[type='search']
+      display: block
+      width: 100%
+      font-size: 40pt
+    select
+      //margin-left: 20%
+      width: 50%
+      margin-top: 10px
+      &:after
+        +cf
+    input[type='range']
+      //margin-left: 20%
+      width: 50%
+      &:after
+        //+cf
     input[type='submit']
       display: inline-block
       height: 1em
-    margin-bottom: 10px
-    margin-right: $map_width
-    padding-right: 40px
 
   ul.ships
     margin-right: $map_width
@@ -71,11 +97,7 @@ nav
           font-weight: bold
       .operator
         &:before
-          display: block
-          content: "."
-          height: 0
-          visibility: hidden
-          clear: both
+          +cf
       .hidden
         display: none
 

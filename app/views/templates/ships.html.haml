@@ -5,11 +5,23 @@
 #ships
   #map
     #canvas
-  %section#filter
-    %h2 Filters
-    %form{action: '#'}
-      %label Ship name
-      %input{type: 'text', name: 'name', placeholder: 'nom'}
+  %form{action: '#'}
+    %input{type: 'search', name: 'name', placeholder: 'nom'}
+    .fields
+      %label Operator
+      %select{name: 'operator', 'data-placeholder' => 'Operator'}
+        %option
+        %option{value: '1'} Cunard Line
+        %option{value: '2'} Costa Croisière
+    .fields
+      %label Classe
+      %select{name: 'operator', 'data-placeholder' => 'Classe'}
+        %option
+        %option{value: '1'} Paquebot
+        %option{value: '2'} Plaisance
+    .fields
+      %label Capacité
+      %input{type: 'range', min: 0, max: 3000}
   %ul.ships
     %li
       %h2 Queen Mary 2
@@ -66,3 +78,4 @@
       })
       new google.maps.Marker({map: map, position: point1})
     }
+    $('select[name="operator"]').chosen()

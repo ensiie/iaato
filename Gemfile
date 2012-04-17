@@ -20,6 +20,7 @@ group :assets do
   gem "rails-backbone"
   gem 'compass-rails'
   gem 'haml_coffee_assets'
+  gem 'chosen-rails'
 end
 
 gem 'jquery-rails'
