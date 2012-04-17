@@ -4,7 +4,7 @@
     %li= link_to image_tag('buttons/locations.png'), templates_locations_path
 #ships
   #map
-    La carte
+    #canvas
   %section#filter
     %h2 Filters
     %form{action: '#'}
@@ -55,3 +55,14 @@
       .description
         RMS Queen Mary 2 is a transatlantic ocean liner. She was the first major ocean liner built since Queen Elizabeth 2 in 1969, the vessel she succeeded as flagship of the Cunard Line. The ship was named the Queen Mary 2 by Queen Elizabeth II in 2004 after the first RMS Queen Mary, completed in 1936. The Queen Mary was in turn named after Mary of Teck, consort of King George V. With the retirement of Queen Elizabeth 2 from active duty in 2008, the Queen Mary 2 is currently the only transatlantic ocean liner in service running between Southampton and New York, although the ship is often used for cruising, including an annual world cruise.
 
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_qTivtaJ223K9YrvDiUBvXL08nlrKQCo&sensor=true&callback=mapsCallback"></script>
+  :javascript
+    mapsCallback = function() {
+      var point1 = new google.maps.LatLng(-70.495574, 9.492188)
+      var map = new google.maps.Map($('#map #canvas')[0], {
+        zoom: 4,
+        center: point1,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      })
+      new google.maps.Marker({map: map, position: point1})
+    }
