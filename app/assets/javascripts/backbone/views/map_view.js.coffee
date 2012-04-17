@@ -4,7 +4,7 @@ class Iaato.Views.MapView extends Backbone.View
     @parentView.bind 'update', @update, @
 
     window.mapsCallback = => @render()
-    $('body').append('<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA_qTivtaJ223K9YrvDiUBvXL08nlrKQCo&sensor=true&callback=mapsCallback"></script>')
+    $('body').append('<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_qTivtaJ223K9YrvDiUBvXL08nlrKQCo&sensor=true&callback=mapsCallback"></script>')
 
   # setup google map on #canvas
   render: ->
