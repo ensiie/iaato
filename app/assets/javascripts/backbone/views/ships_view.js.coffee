@@ -33,3 +33,5 @@ class Iaato.Views.ShipsView extends Backbone.View
   renderShips: (filtredCollection = @collection) ->
     @$('ul.ships').html ''
     filtredCollection.each (ship) => @$('ul.ships').append(@template.ship_list_item ship)
+    @trigger 'listupdate', filtredCollection
+
