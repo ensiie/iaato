@@ -1,9 +1,0 @@
-%nav.menu
-#{id: @name}
-  #map
-  %section#filter
-    %h2 Filters
-    %form{action: '#'}
-      %label Ship name
-      %input{type: 'text' name: 'name' placeholder: 'nom'}
-  %ul.ships

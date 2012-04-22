@@ -1,0 +1,13 @@
+%form{action: '#'}
+  %input{type: 'search', name: 'name', placeholder: 'nom'}
+  .fields
+    %label Operator
+    %select{name: 'operator', 'data-placeholder' => 'Operator'}
+      %option
+  .fields
+    %label Classe
+    %select{name: 'class', 'data-placeholder' => 'Classe'}
+      %option
+  .fields
+    %label Capacité
+    %input{type: 'range', min: 0, max: 3000}
