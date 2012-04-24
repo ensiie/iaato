@@ -1,0 +1,9 @@
+%form{id: 'login_form' action: '/users/sign_in'}
+  %p You need to login to access this application
+  %label Username :
+  %input{type: 'text' name: 'username' placeholder: context.username}
+  %br
+  %label Password :
+  %input{type: 'password' name: 'password' placeholder: 'password'}
+  %br
+  %input{type: 'submit' name: 'Log in'}
