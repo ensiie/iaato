@@ -7,6 +7,9 @@ class Ship
   #field :type
   field :position, type: Array
 
+  belongs_to :operator
+  belongs_to :ship_class
+
   validates :capacity, presence: true
   validates :name, uniqueness: true, presence: true
 

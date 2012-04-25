@@ -23,6 +23,8 @@ Iaato::Application.routes.draw do
       resources :locations do
         resources :reservations
       end
+      resources :operators
+      resources :ship_classes
     end
   end
 

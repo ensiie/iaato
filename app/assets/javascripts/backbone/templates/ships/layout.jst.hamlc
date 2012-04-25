@@ -1,0 +1,4 @@
+%nav.menu
+#{id: @name}
+  #map
+  %ul.ships
