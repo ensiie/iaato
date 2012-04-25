@@ -1,5 +1,5 @@
 %ul
   %li
-    %a{href: '/ships'} Ships
+    %a.ships{href: '/ships'}
   %li
-    %a{href: '/locations'} Locations
+    %a.locations{href: '/locations'}
