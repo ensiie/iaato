@@ -12,7 +12,6 @@ class Iaato.Views.ShipsView extends Backbone.View
     'submit form': 'filterAbordSubmition'
 
   initialize: ->
-    @name = 'ships'
     @renderLayout()
     @renderFilter()
     new Iaato.Views.NavView(el: @$('nav.menu'))
