@@ -1,0 +1,12 @@
+%form{id: 'login_form' action: '/users/sign_in'}
+  %span{id: 'login_error'}
+  %p You need to login to access this application
+  %label Email :
+  %input{type: 'text' id: 'username' name: 'username' placeholder: context.username}
+  %br
+  %label Password :
+  %input{type: 'password' id: 'password' name: 'password' placeholder: 'password'}
+  %br
+  %input{type: 'submit' name: 'Log in'}
+%button{id: 'logout_button'}
+  Logout
