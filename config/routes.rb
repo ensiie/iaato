@@ -13,7 +13,7 @@ end
 Iaato::Application.routes.draw do
   root to: 'home#index'
 
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => "sessions" }
 
   namespace :api do
     namespace :v1, path: '', constraints: ApiV1Constraint.new do

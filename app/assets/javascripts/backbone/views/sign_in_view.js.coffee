@@ -10,14 +10,22 @@ class Iaato.Views.SignInView extends Backbone.View
     @$el.html @template.layout @
 
   events:
-    "submit form" : "prevent_submit"
-    "click button" : "login"
+    "submit form#login_form" : "login"
+    "click button#logout_button" : "logout"
 
-  prevent_submit: (e) ->
-    e.prevent_default()
-    false
+  logout: ->
+    localStorage.removeItem('auth_token')
+    $.ajax '/users/sign_out'
+      type: 'DELETE'
+      dataType: 'json'
+      error: (jqXHR, textStatus, errorThrown) ->
+        if textStatus = 302
+          $('#login_error').html("Logout successful")
+        else
+          $('#login_error').html("Logout failed")
 
-  login: ->
+  login: (e) ->
+    e.preventDefault()
     $.ajaxSetup ->
       beforeSend: (jqXHR) ->
         token = $('meta[name="csrf-token"]').attr('content')
@@ -27,10 +35,13 @@ class Iaato.Views.SignInView extends Backbone.View
     $.ajax '/users/sign_in'
       type: 'POST'
       dataType: 'json'
-      data: {email: $('#login_form').username.value, password: $('#login_form').password.value}
+      data: { 'user[email]': $('#username').val(), 'user[password]': $('#password').val()}
       error: (jqXHR, textStatus, errorThrown) ->
-        $('body').append "AJAX Error: #{textStatus}"
+        $('#login_error').html("Login failed")
       success: (data, textStatus, jqXHR) ->
-        @navigate 'ships'
-  
-
+        if data.response == "ok"
+          localStorage['auth_token'] = data.auth_token
+          $('#login_error').html("")
+          window.router.navigate("/ships", {trigger: true})
+        else
+          $('#login_error').html("Login failed")

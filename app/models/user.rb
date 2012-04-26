@@ -1,6 +1,8 @@
 class User
   include Mongoid::Document
 
+  before_save :ensure_authentication_token
+
   devise :database_authenticatable, :recoverable, :token_authenticatable, :rememberable
 
   ## Database authenticatable
