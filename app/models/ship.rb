@@ -4,14 +4,15 @@ class Ship
   field :name
   field :travelers, type: Integer, default: 0
   field :capacity, type: Integer
-  #field :type
   field :position, type: Array
+  field :email, type: String
+  field :phone, type: String
+  field :call_sign, type: String
 
   belongs_to :operator
   belongs_to :ship_class
 
-  validates :capacity, presence: true
   validates :name, uniqueness: true, presence: true
 
-  attr_accessible :name, :travelers, :capacity, :position
+  attr_accessible :name, :travelers, :capacity, :position, :email, :phone
 end
