@@ -16,3 +16,5 @@
 
 .sass-cache
 .DS_Store
+
+/data
