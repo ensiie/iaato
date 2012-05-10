@@ -7,6 +7,7 @@ class Ship
   field :position, type: Array
   field :email, type: String
   field :phone, type: String
+  field :call_sign, type: String
 
   belongs_to :operator
   belongs_to :ship_class
