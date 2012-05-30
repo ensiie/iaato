@@ -1,13 +1,10 @@
 %form{action: '#'}
-  %input{type: 'search', name: 'name', placeholder: 'nom'}
+  %input{type: 'search', name: 'name', placeholder: 'name'}
   .fields
-    %label Operator
-    %select{name: 'operator', 'data-placeholder' => 'Operator'}
+    %label{for: 'operator'} Operator
+    %select#operator{ name: 'operator', 'data-placeholder' => 'Operator'}
       %option
   .fields
-    %label Classe
-    %select{name: 'class', 'data-placeholder' => 'Classe'}
+    %label{for: 'class'}Class
+    %select#class{name: 'class', 'data-placeholder' => 'Class'}
       %option
-  .fields
-    %label Capacité
-    %input{type: 'range', min: 0, max: 3000}
