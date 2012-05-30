@@ -10,6 +10,8 @@ class Iaato.Views.ShipsView extends Backbone.View
     'change form': 'filterChange'
     'keyup form': 'filterChange'
     'submit form': 'filterAbordSubmition'
+    'change operator' : 'filterChange'
+    'change class': 'filterChange'
 
   initialize: ->
     @renderLayout()
@@ -47,9 +49,11 @@ class Iaato.Views.ShipsView extends Backbone.View
     operators = new Iaato.Collections.Operators()
     operators.bind 'reset', =>
       operators.each (o) => $('select[name="operator"]', filterEl).append(@template.operatorFilterOption o)
+      @$('#operator').chosen()
     shipClasses = new Iaato.Collections.ShipClasses()
     shipClasses.bind 'reset', =>
       shipClasses.each (sc) => $('select[name="class"]', filterEl).append(@template.shipClassFilterOption sc)
+      @$('#class').chosen()
     operators.fetch()
     shipClasses.fetch()
 
